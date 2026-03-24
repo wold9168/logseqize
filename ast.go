@@ -1,7 +1,25 @@
 package logseqize
 
-import "github.com/gomarkdown/markdown/ast"
+import (
+	"fmt"
+
+	"github.com/gomarkdown/markdown/ast"
+)
 
 func Modify(input *ast.Node) error {
+	return nil
+}
+
+func replaceHeadingWithParagraph(input ast.Node) error {
+	if heading, ok := input.(*ast.Heading); !ok {
+		return fmt.Errorf("input is not a node")
+	} else {
+		para := &ast.Paragraph{Container: heading.Container}
+		for i, node := range heading.GetParent().GetChildren() {
+			if node == heading {
+				heading.GetParent().GetChildren()[i] = para
+			}
+		}
+	}
 	return nil
 }
