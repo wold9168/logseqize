@@ -16,9 +16,13 @@
 
 > blockquote
 
+Ordered List:
+
 1. First item
 2. Second item
 3. Third item
+
+Unordered List:
 
 - First item
 - Second item
@@ -50,8 +54,6 @@ console.log("Hello, World!")
 
 Here's a sentence with a footnote. [^1]
 [^1]: This is the footnote. 
-
-### My Great Heading {#custom-id}
 
 ~~The world is flat.~~
 
