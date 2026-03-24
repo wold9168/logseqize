@@ -6,7 +6,17 @@ import (
 	"github.com/gomarkdown/markdown/ast"
 )
 
-func Modify(input *ast.Node) error {
+func Modify(input ast.Node) error {
+	ast.WalkFunc(input, func(node ast.Node, entering bool) ast.WalkStatus {
+		if entering {
+			switch node.(type) {
+			case *ast.Heading:
+				replaceHeadingWithParagraph(node.(*ast.Heading))
+			}
+		}
+		return ast.GoToNext
+	})
+
 	return nil
 }
 

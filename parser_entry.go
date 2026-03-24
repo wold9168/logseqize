@@ -17,7 +17,7 @@ func Convert(input []byte) (output string, err error) {
 	extensions := parser.CommonExtensions
 	p := parser.NewWithExtensions(extensions)
 	doctree := p.Parse(input)
-	Modify(&doctree)
+	Modify(doctree)
 	output, err = ast.ToString(doctree), nil
 	return
 }
