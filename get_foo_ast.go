@@ -11,7 +11,7 @@ import (
 // GetFooAst prints AST of markdown_foo.md into stdout
 // Provides reference for development.
 func GetFooAst() {
-	md, err := os.ReadFile("markdown_foo")
+	md, err := os.ReadFile("markdown_foo.md")
 	if err != nil {
 		fmt.Println("ReadFile Failed:", err)
 		return
