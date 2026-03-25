@@ -2,6 +2,7 @@ package logseqize
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/gomarkdown/markdown/ast"
 )
@@ -25,6 +26,7 @@ func replaceHeadingWithParagraph(input ast.Node) error {
 		return fmt.Errorf("input is not a node")
 	} else {
 		para := &ast.Paragraph{Container: heading.Container}
+		para.Children[0].AsLeaf().Literal = []byte(strings.Repeat("#", heading.Level) + " " + string(para.Children[0].AsLeaf().Literal))
 		for i, node := range heading.GetParent().GetChildren() {
 			if node == heading {
 				heading.GetParent().GetChildren()[i] = para
