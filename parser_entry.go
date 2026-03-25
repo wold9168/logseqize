@@ -1,10 +1,7 @@
 package logseqize
 
 import (
-	"os"
-
 	"github.com/gomarkdown/markdown"
-	"github.com/gomarkdown/markdown/ast"
 	"github.com/gomarkdown/markdown/md"
 	"github.com/gomarkdown/markdown/parser"
 )
