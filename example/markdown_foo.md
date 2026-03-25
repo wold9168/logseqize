@@ -28,13 +28,6 @@ Unordered List:
 - Second item
 - Third item
 
-CJK Text: 
-- 你好，世界！
-- こんにちは、世界！
-- 안녕, 세계!
-
-Emoji：😋
-
 `code`
 
 ---
