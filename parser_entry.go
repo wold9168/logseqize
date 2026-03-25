@@ -1,14 +1,18 @@
 package logseqize
 
 import (
+	"os"
+
+	"github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/ast"
+	"github.com/gomarkdown/markdown/md"
 	"github.com/gomarkdown/markdown/parser"
 )
 
 // ConvertByString converts Standard Markdown String into Logseq-style Markdown String
 func ConvertByString(input string) (output string, err error) {
 	inputBytes := []byte(input)
-	output,err = Convert(inputBytes)
+	output, err = Convert(inputBytes)
 	return
 }
 
@@ -18,7 +22,9 @@ func Convert(input []byte) (output string, err error) {
 	p := parser.NewWithExtensions(extensions)
 	doctree := p.Parse(input)
 	Modify(doctree)
-	output, err = ast.ToString(doctree), nil
+	renderer := md.NewRenderer()
+
+	output, err = string(markdown.Render(doctree, renderer)), nil
 	return
 }
 
